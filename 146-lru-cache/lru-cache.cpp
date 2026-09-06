@@ -32,9 +32,11 @@ public:
         }
         if (n == v.size()) {
             v.erase(v.begin());
-           
+        v.push_back({key,value});    
         }
-        v.push_back({key, value});
+        else{
+            v.push_back({key,value});
+        }
     }
 };
 
