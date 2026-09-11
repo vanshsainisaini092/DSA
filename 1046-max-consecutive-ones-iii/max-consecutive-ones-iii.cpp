@@ -19,28 +19,46 @@ public:
         //          maxi = max(maxi, j-i+1);
         //     }
         // }
-int zeros=0;
+        int zeros=0;
         int l = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            if (nums[i] == 0) {
-                zeros++;
-            }
+        // for (int i = 0; i < nums.size(); i++) {
+        //     if (nums[i] == 0) {
+        //         zeros++;
+        //     }
 
-            if (zeros <= k) {
-                maxi=max(maxi,i-l+1);
-            }
-            else{
-                while(l<i){
+        //     if (zeros <= k) {
+        //         maxi=max(maxi,i-l+1);
+        //     }
+        //     else{
+        //         while(l<i){
                     
-                    if(nums[l]==0){
-                        zeros--;
-                        l=l+1;
-                        break;
-                    }
-                    l++;
-                }
-            }
+        //             if(nums[l]==0){
+        //                 zeros--;
+        //                 l=l+1;
+        //                 break;
+        //             }
+        //             l++;
+        //         }
+        //     }
+        // }
+
+
+
+for(int i=0;i<nums.size();i++){
+
+    if(nums[i]==0){
+        zeros++;
+    }
+    if(zeros<=k){
+        maxi=max(maxi,i-l+1);
+    }
+    else{
+        if(nums[l]==0){
+            zeros--;
         }
+        l++;
+    }
+}
         return maxi;
     }
 };
