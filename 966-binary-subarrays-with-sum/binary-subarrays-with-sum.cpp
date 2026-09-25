@@ -15,20 +15,47 @@ public:
         //     }
 
         // }
-        map<int,int>mp;
-        int currsum = 0;
+
+        // better approch
+
+        // map<int,int>mp;
+        // int currsum = 0;
+        // int count = 0;
+
+        // mp[0] = 1;
+        // for (int i = 0; i < nums.size(); i++) {
+
+        //     currsum += nums[i];
+        //     int value=currsum-goal;
+
+        //     if(mp.find(value)!=mp.end()){
+        //         count+=mp[value];
+        //     }
+        //     mp[currsum]++;
+        // }
+
         int count = 0;
+        int l = 0;
+        long long sum = 0;
+        int r = 0;
+        int count_zeros = 0;
+        while (r < nums.size()) {
+            sum += nums[r];
+            while (l < r && (nums[l] == 0 || sum > goal)) {
 
-        mp[0] = 1;
-        for (int i = 0; i < nums.size(); i++) {
+                if (nums[l] == 0) {
+                    count_zeros++;
+                } else {
+                    count_zeros = 0;
+                }
 
-            currsum += nums[i];
-            int value=currsum-goal;
-
-            if(mp.find(value)!=mp.end()){
-                count+=mp[value];
+                sum -= nums[l];
+                l++;
             }
-            mp[currsum]++;
+            if (sum == goal) {
+                count = count + 1 + count_zeros;
+            }
+            r++;
         }
 
         return count;
